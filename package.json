@@ -7,7 +7,7 @@
   "packageManager": "pnpm@10.34.7",
   "scripts": {
     "start": "wrangler dev",
-    "deploy": "wrangler deploy",
+    "deploy": "printf %s \"$GITHUB_CLIENT_SECRET\" | wrangler secret put GITHUB_CLIENT_SECRET && wrangler deploy --var \"GITHUB_CLIENT_ID:$GITHUB_CLIENT_ID\" --var \"ALLOWED_DOMAINS:$ALLOWED_DOMAINS\" --keep-vars",
     "check": "pnpm run '/^check:.*/'",
     "check:audit": "pnpm audit",
     "check:cspell": "cspell --no-progress",
